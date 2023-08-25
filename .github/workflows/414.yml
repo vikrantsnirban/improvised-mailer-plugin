@@ -1,16 +1,15 @@
 # Automates creation of Release Drafts using Release Drafter
 # More Info: https://github.com/jenkinsci/.github/blob/master/.github/release-drafter.adoc
-
+name: 414 Version Action
+run-name: Building HPI of 414 Version
 on:
   push:
     branches:
-      - master
+      - 414
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -23,7 +22,7 @@ jobs:
       run: mvn clean install --file pom.xml -DskipTests
     - uses: actions/upload-artifact@v3
       with:
-        name: hpi
+        name: 414-HPI
         path: target/*.hpi
   
   
